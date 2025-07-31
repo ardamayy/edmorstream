@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edmor Stream - Film, Dizi ve Özel İçerikler</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons for Play/Info buttons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom scrollbar styles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Add a subtle shadow to the header on scroll */
+        .header-shadow {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+        /* Modal styles */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-300">
+
+    <div id="root">
+        <!-- HEADER / NAVİGASYON -->
+        <header class="fixed top-0 left-0 right-0 z-50 p-4 sm:px-8 md:px-16 flex justify-between items-center transition-all duration-300 header-shadow">
+            <div class="flex items-center space-x-8">
+                <!-- Logo -->
+                <h1 class="text-2xl md:text-3xl font-extrabold text-red-600 tracking-wider">
+                    <a href="#">EDMOR STREAM</a>
+                </h1>
+                <!-- Ana Navigasyon (Masaüstü için) -->
+                <nav class="hidden lg:flex items-center space-x-5">
+                    <a href="#" class="text-white font-semibold hover:text-gray-400 transition-colors">Ana Sayfa</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">Diziler</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">Filmler</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">Yeni ve Popüler</a>
+                </nav>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Arama ve Bildirimler gibi ikonlar eklenebilir -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <!-- Kullanıcı Girişi Butonu -->
+                <button class="bg-red-600 text-white font-semibold px-4 py-2 rounded-md hover:bg-red-700 transition-all duration-300">
+                    Giriş Yap
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <!-- HERO BÖLÜMÜ - ÖNE ÇIKAN İÇERİK -->
+            <section class="h-screen min-h-[600px] flex items-end p-8 md:p-16 relative text-white" style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0.1) 50%), url('https://www.soylentidergi.com/wp-content/uploads/2022/02/gibi.jpg'); background-size: cover; background-position: center top;">
+                <div class="w-full md:w-1/2 lg:w-1/3 space-y-4">
+                    <h2 class="text-4xl md:text-6xl font-bold drop-shadow-lg">GİBİ</h2>
+                    <p class="text-gray-200 text-lg leading-relaxed drop-shadow-md">
+                        Yılmaz, İlkkan ve Ersoy sürekli olarak sıradan hayatlarını altüst eden absürt olayların içinde kendilerini bulan iki arkadaştır.
+                    </p>
+                    <div class="flex space-x-4 pt-4">
+                        <button id="infoButton" class="bg-gray-500/70 text-white font-bold py-3 px-8 rounded-md flex items-center space-x-2 hover:bg-gray-600/70 transition-all">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Daha Fazla Bilgi</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- İÇERİK KATEGORİLERİ -->
+            <div class="space-y-12 py-16 px-4 sm:px-8 md:px-16 -mt-16">
+                
+                <!-- Kategori: Edmor Stream Özel İçerikleri -->
+                <section>
+                    <h3 class="text-2xl font-bold text-white mb-4">Edmor Stream Özel İçerikleri</h3>
+                    <div class="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
+                        <!-- İçerik Kartları -->
+                        <div class="flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 group">
+                            <img src="https://placehold.co/400x600/e8491d/ffffff?text=Özel+1" alt="İçerik Posteri" class="rounded-lg transform group-hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        </div>
+                        <div class="flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 group">
+                            <img src="https://placehold.co/400x600/e8681d/ffffff?text=Özel+2" alt="İçerik Posteri" class="rounded-lg transform group-hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        </div>
+                        <div class="flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 group">
+                            <img src="https://placehold.co/400x600/e8821d/ffffff?text=Özel+3" alt="İçerik Posteri" class="rounded-lg transform group-hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        </div>
+                        <div class="flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 group">
+                            <img src="https://placehold.co/400x600/e89c1d/ffffff?text=Özel+4" alt="İçerik Posteri" class="rounded-lg transform group-hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        </div>
+                         <div class="flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 group">
+                            <img src="https://placehold.co/400x600/e8b61d/ffffff?text=Özel+5" alt="İçerik Posteri" class="rounded-lg transform group-hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="py-12 px-4 sm:px-8 md:px-16 border-t border-gray-800 text-gray-400">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-sm mt-8">&copy; 2024 Edmor Stream, Inc.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- BİLGİ MODALI -->
+    <div id="infoModal" class="modal fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-800 text-white rounded-lg p-8 max-w-md w-full relative shadow-lg">
+            <button id="closeModal" class="absolute top-2 right-3 text-gray-400 hover:text-white text-3xl font-bold">&times;</button>
+            <h3 class="text-xl font-bold mb-4 text-white">Bilgilendirme</h3>
+            <p class="text-gray-300">Bu bir test sayfası olup, kurum ve kuruluşlara ait telif barındıran içerikler yer almamaktadır.</p>
+        </div>
+    </div>
+
+    <script>
+        // Header'ın scroll sırasında arka plan rengini değiştirmesi için küçük bir script
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-black');
+                header.classList.remove('header-shadow');
+            } else {
+                header.classList.remove('bg-black');
+                header.classList.add('header-shadow');
+            }
+        });
+
+        // Modal (Mesaj Kutusu) Kontrolleri
+        const infoButton = document.getElementById('infoButton');
+        const infoModal = document.getElementById('infoModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // "Daha Fazla Bilgi" butonuna tıklanınca modalı göster
+        infoButton.addEventListener('click', () => {
+            infoModal.classList.remove('hidden');
+            infoModal.classList.add('flex');
+        });
+
+        // Kapatma butonuna tıklanınca modalı gizle
+        closeModal.addEventListener('click', () => {
+            infoModal.classList.add('hidden');
+            infoModal.classList.remove('flex');
+        });
+
+        // Modalın dışına tıklanınca modalı gizle
+        infoModal.addEventListener('click', (event) => {
+            if (event.target === infoModal) {
+                infoModal.classList.add('hidden');
+                infoModal.classList.remove('flex');
+            }
+        });
+    </script>
+</body>
+</html>
